@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Grid, Paper, FormControl, TextField, InputLabel, OutlinedInput } from '@material-ui/core';
+import { Button, Grid, Paper, TextField, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
@@ -18,7 +18,11 @@ function ComplaintsForm() {
     return (
         <Paper>
             <form className={classes.form}>
-                <h1>Submit a complaint</h1>
+
+                <Typography variant="h4">
+                    Submit a complaint
+                </Typography>
+
                 <p>Enter details about your complaint including what happened.</p>
 
                 <TextField required fullWidth variant="outlined" label="Name" />
