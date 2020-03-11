@@ -13,7 +13,7 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Header from './header';
-
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
     content: {
@@ -27,30 +27,77 @@ const useStyles = makeStyles(theme => ({
         }
     },
     text: {
-        marginTop: theme.spacing(2)
+        margin: theme.spacing(2, 0)
     },
-    loadingWrap: {
+    centeredContent: {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        flexGrow: 1
+        flexGrow: 1,
+        marginTop: -1 * theme.spacing(16)
     }
 }));
 
 const FAKE_LOADING_TIME_MS = 1000;
 
+const FormStates = Object.freeze({
+    loading: 0,
+    ready: 1,
+    completed: 2
+});
+
+function Loading() {
+    const classes = useStyles();
+
+    return (
+        <div className={classes.centeredContent}>
+            <CircularProgress />
+            <p>...loading...</p>
+        </div>
+    );
+}
+
+function Completed() {
+    const classes = useStyles();
+    const history = useHistory();
+
+    const handleHomeClick = () => {
+        history.push("/");
+    };
+
+    return (
+        <Container className={classes.centeredContent}>
+            <Header>Your complaint has been submitted</Header>
+            <Typography className={classes.text} variant="body1">
+                Please allow a few days for someone to contact you about the problem you reported
+            </Typography>
+            <Button variant="contained" size="large" onClick={handleHomeClick}>
+                Return Home
+            </Button>
+        </Container>
+    );
+}
+
 function ComplaintsForm() {
     const classes = useStyles();
-    const [loading, setLoading] = useState(false);
+    const [formState, setFormState] = useState(FormStates.ready);
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        setLoading(true);
-        setTimeout(() => setLoading(false), FAKE_LOADING_TIME_MS);
+        setFormState(FormStates.loading);
+        setTimeout(() => setFormState(FormStates.completed), FAKE_LOADING_TIME_MS);
     };
 
-    const form = (
+    if (formState === FormStates.loading) {
+        return <Loading />
+    }
+
+    if (formState === FormStates.completed) {
+        return <Completed />
+    }
+
+    return (
         <Container className={classes.content}>
             <Header>Submit a complaint</Header>
             <Typography className={classes.text} variant="body1">
@@ -76,15 +123,6 @@ function ComplaintsForm() {
             </form>
         </Container>
     );
-
-    const spinner = (
-        <div className={classes.loadingWrap}>
-            <CircularProgress />
-            <p>...loading...</p>
-        </div>
-    );
-
-    return loading ? spinner : form;
 }
 
 export default ComplaintsForm;
