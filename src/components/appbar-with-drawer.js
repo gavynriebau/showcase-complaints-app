@@ -32,6 +32,10 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: theme.palette.primary.main,
         color: theme.palette.primary.contrastText,
     },
+    listItemIcon: {
+        minWidth: theme.spacing(1),
+        marginRight: theme.spacing(2)
+    },
     icon: {
         fill: theme.palette.primary.contrastText
     }
@@ -62,13 +66,13 @@ function AppBarWithDrawer() {
                 </Typography>
                 <List className={classes.menuList}>
                     <ListItem button onClick={goToComplaintsForm}>
-                        <ListItemIcon>
+                        <ListItemIcon className={classes.listItemIcon}>
                             <ComplaintIcon className={classes.icon} />
                         </ListItemIcon>
                         <ListItemText primary="Submit complaint" />
                     </ListItem>
                     <ListItem button onClick={goToAboutPage}>
-                        <ListItemIcon>
+                        <ListItemIcon className={classes.listItemIcon}>
                             <InfoIcon className={classes.icon} />
                         </ListItemIcon>
                         <ListItemText primary="About" />
