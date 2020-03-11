@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
         padding: theme.spacing(2)
     },
     menuList: {
-        width: '18rem'
+        width: '16rem'
     },
     drawer: {
         backgroundColor: theme.palette.primary.main,
