@@ -22,14 +22,14 @@ import {
 
 import { useHistory } from "react-router-dom";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
     menuHeader: {
-        padding: '16px'
+        padding: theme.spacing(2)
     },
     menuList: {
         width: '18rem'
     }
-});
+}));
 
 function AppBarWithDrawer() {
     const classes = useStyles();
@@ -52,7 +52,7 @@ function AppBarWithDrawer() {
             </AppBar>
             <Drawer open={menuOpen} onClose={closeMenu}>
                 <Typography variant="h5" className={classes.menuHeader}>
-                    Menu
+                    Showcase App
                 </Typography>
                 <Divider />
                 <List className={classes.menuList}>
