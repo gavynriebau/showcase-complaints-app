@@ -1,16 +1,18 @@
 import React from 'react';
-import { Container, Typography, List, ListItem, ListItemText, ListItemAvatar, Avatar } from '@material-ui/core';
-import PaddedPaper from './padded-paper'
+import { Container, Typography, List, ListItem, ListItemText, ListItemAvatar, Avatar, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import Header from './header';
 
 const useStyles = makeStyles(theme => ({
-    content: {
-        '& > *': {
-            margin: theme.spacing(1),
-        },
+    paper: {
+        marginTop: theme.spacing(3),
+        padding: theme.spacing(2)
     },
     headerItem: {
         fontWeight: 'bold'
+    },
+    text: {
+        marginTop: theme.spacing(2)
     }
 }));
 
@@ -19,15 +21,13 @@ function About() {
 
     return (
         <Container>
-            <PaddedPaper classes={{ paper: classes.content }}>
-                <Typography variant="h4">
-                    About this showcase application
+            <Paper className={classes.paper}>
+                <Header>About this demo app</Header>
+                <Typography className={classes.text} variant="body1">
+                    This is a fake app that I built to both practice and demonstrate skills in creating web apps.<br />
+                    There is some information below about how the app was built including which technologies were used.<br />
+                    I chose to make a fake complaints form because I wanted to build a solution similar in nature to apps that I've previously built for clients.<br />
                 </Typography>
-                <Typography variant="body1">
-                    This is not a real app, I built it to demonstrate some of my skills in creating web apps, I chose to make a fake complaints form because I wanted to build something similar to apps I've built for clients in the past.<br />
-                    <br />
-                    Below is some information about how the app was built and what technologies were used.
-                    </Typography>
                 <List>
                     <ListItem>
                         <ListItemAvatar>
@@ -83,7 +83,7 @@ function About() {
                         } />
                     </ListItem>
                 </List>
-            </PaddedPaper>
+            </Paper>
         </Container>
     );
 }
