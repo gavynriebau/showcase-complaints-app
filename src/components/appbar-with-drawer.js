@@ -10,7 +10,6 @@ import {
     List,
     ListItem,
     ListItemIcon,
-    Divider,
     Typography
 } from '@material-ui/core';
 
@@ -28,6 +27,13 @@ const useStyles = makeStyles(theme => ({
     },
     menuList: {
         width: '18rem'
+    },
+    drawer: {
+        backgroundColor: theme.palette.primary.main,
+        color: theme.palette.primary.contrastText,
+    },
+    icon: {
+        fill: theme.palette.primary.contrastText
     }
 }));
 
@@ -50,21 +56,20 @@ function AppBarWithDrawer() {
                     </IconButton>
                 </Toolbar>
             </AppBar>
-            <Drawer open={menuOpen} onClose={closeMenu}>
+            <Drawer classes={{ paper: classes.drawer}} open={menuOpen} onClose={closeMenu}>
                 <Typography variant="h5" className={classes.menuHeader}>
-                    Showcase App
+                    Demo App
                 </Typography>
-                <Divider />
                 <List className={classes.menuList}>
                     <ListItem button onClick={goToComplaintsForm}>
                         <ListItemIcon>
-                            <ComplaintIcon />
+                            <ComplaintIcon className={classes.icon} />
                         </ListItemIcon>
                         <ListItemText primary="Submit complaint" />
                     </ListItem>
                     <ListItem button onClick={goToAboutPage}>
                         <ListItemIcon>
-                            <InfoIcon />
+                            <InfoIcon className={classes.icon} />
                         </ListItemIcon>
                         <ListItemText primary="About" />
                     </ListItem>
