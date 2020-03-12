@@ -1,68 +1,32 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Demo complaints app
 
-In the project directory, you can run:
+[https://showcase-complaints-app.azurewebsites.net/](https://showcase-complaints-app.azurewebsites.net/)
 
-### `npm start`
+This is a demo app I created to practice building React apps and hosting them on Azure.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+There is some information below about how the app was built including which technologies were used.
+I chose to make a fake complaints form because I wanted to build a solution similar in nature to apps that I've previously built for clients.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+**Hosted on Microsoft Azure**
 
-### `npm test`
+Azure is Microsoft's a cloud platform that allows companies to build, deploy and manage applications in the cloud.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Built using React**
 
-### `npm run build`
+React is a javascript library for building user interfaces that was created by Facebook, it enables developers to easily and quickly create applications.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Built using Material UI**
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Material UI is a component library which provides out-of-the-box components with styling based on Google's material design framework.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Containerized**
 
-### `npm run eject`
+The application is built into containerized Docker image which are stored in the Azure container registry.
+Containerization ensures apps behave the same across any machine where it's deployed and enables fast rollback to previous versions.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**Continuous deployment**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+The source code for this application is hosted on Github, every code commit triggers an automatic build of a new Docker image.
+The latest image is then automatically deployed to the Azure container app where it's hosted.
+Continuous deployment offers productivity benefits to organizations by allowing developers to rapidly evolve and deploy software.
