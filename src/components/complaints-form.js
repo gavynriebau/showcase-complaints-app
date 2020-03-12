@@ -48,7 +48,7 @@ const FormStates = Object.freeze({
 function Caption() {
     return (
         <Typography variant="caption">
-            * This is a demo app, no details are actually captured or stored, for more information
+            * This is a demo app, no information is actually captured or stored, for more details
             see <Link to="/about">about</Link>
         </Typography>
     );
