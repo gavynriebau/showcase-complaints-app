@@ -22,9 +22,10 @@ function About() {
         <Container className={classes.content}>
             <Header>About this demo app</Header>
             <Typography className={classes.text} variant="body1">
-                This is a fake app that I built to both practice and demonstrate skills in creating web apps.<br />
-                    There is some information below about how the app was built including which technologies were used.<br />
-                    I chose to make a fake complaints form because I wanted to build a solution similar in nature to apps that I've previously built for clients.<br />
+                This is a fake app built to practice creating a web app using react.<br />
+                <br />
+                There is some information below about how the app was built including which technologies were used.<br />
+                I chose to make a fake complaints form because I wanted to build a solution similar in nature to apps that I've previously built for clients.<br />
             </Typography>
             <List>
                 <ListItem>

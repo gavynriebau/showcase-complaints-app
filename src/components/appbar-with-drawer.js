@@ -62,7 +62,7 @@ function AppBarWithDrawer() {
             </AppBar>
             <Drawer classes={{ paper: classes.drawer}} open={menuOpen} onClose={closeMenu}>
                 <Typography variant="h5" className={classes.menuHeader}>
-                    Demo App
+                    Demo
                 </Typography>
                 <List className={classes.menuList}>
                     <ListItem button onClick={goToComplaintsForm}>

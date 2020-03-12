@@ -9,11 +9,12 @@ import {
     InputLabel,
     Select,
     MenuItem,
-    CircularProgress
+    CircularProgress,
+    Box
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Header from './header';
-import { useHistory } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
     content: {
@@ -25,9 +26,6 @@ const useStyles = makeStyles(theme => ({
             marginTop: theme.spacing(1),
             marginBottom: theme.spacing(1),
         }
-    },
-    text: {
-        margin: theme.spacing(2, 0)
     },
     centeredContent: {
         display: 'flex',
@@ -47,33 +45,44 @@ const FormStates = Object.freeze({
     completed: 2
 });
 
+function Caption() {
+    return (
+        <Typography variant="caption">
+            * This is a demo app, no details are actually captured or stored, for more information
+            see <Link to="/about">about</Link>
+        </Typography>
+    );
+}
+
 function Loading() {
     const classes = useStyles();
 
     return (
         <div className={classes.centeredContent}>
             <CircularProgress />
-            <p>...loading...</p>
+            <p>...submitting complaint...</p>
         </div>
     );
 }
 
-function Completed() {
+function Completed(props) {
     const classes = useStyles();
-    const history = useHistory();
 
-    const handleHomeClick = () => {
-        history.push("/");
+    const handleResetClick = () => {
+        props.onReset();
     };
 
     return (
         <Container className={classes.centeredContent}>
             <Header>Your complaint has been submitted</Header>
-            <Typography className={classes.text} variant="body1">
-                Please allow a few days for someone to contact you about the problem you reported
-            </Typography>
-            <Button variant="contained" size="large" onClick={handleHomeClick}>
-                Return Home
+            <Box my={2}>
+                <Typography variant="body1">
+                    Please allow a few days for someone to contact you about the problem you reported
+                </Typography>
+                <Caption />
+            </Box>
+            <Button variant="contained" size="large" onClick={handleResetClick}>
+                Reset
             </Button>
         </Container>
     );
@@ -94,18 +103,21 @@ function ComplaintsForm() {
     }
 
     if (formState === FormStates.completed) {
-        return <Completed />
+        return <Completed onReset={() => setFormState(FormStates.ready)} />
     }
 
     return (
         <Container className={classes.content}>
             <Header>Submit a complaint</Header>
-            <Typography className={classes.text} variant="body1">
-                Enter details about your complaint including what happened.
-            </Typography>
+            <Box my={2}>
+                <Typography variant="body1">
+                    Enter details about your complaint including what happened.
+                </Typography>
+                <Caption />
+            </Box>
             <form className={classes.form} onSubmit={handleSubmit}>
-                <TextField required fullWidth variant="outlined" label="Your name" />
-                <FormControl required fullWidth variant="outlined" className={classes.formControl}>
+                <TextField fullWidth variant="outlined" label="Your name" />
+                <FormControl fullWidth variant="outlined" className={classes.formControl}>
                     <InputLabel id="incident-type-label">Incident Type</InputLabel>
                     <Select
                         labelId="incident-type-label"
@@ -115,8 +127,8 @@ function ComplaintsForm() {
                         <MenuItem value={3}>Other</MenuItem>
                     </Select>
                 </FormControl>
-                <TextField required fullWidth variant="outlined" label="Name of person involved" />
-                <TextField required fullWidth multiline variant="outlined" label="Description of what happened" rows="8" />
+                <TextField fullWidth variant="outlined" label="Name of person involved" />
+                <TextField fullWidth multiline variant="outlined" label="Description of what happened" rows="8" />
                 <Grid container justify="flex-end">
                     <Button variant="contained" color="primary" size="large" type="submit">Submit</Button>
                 </Grid>
