@@ -1,15 +1,11 @@
-import React from 'react';
-import './App.css';
-import ComplaintsForm from './views/ComplaintsForm';
-import About from './views/About';
-import AppBarWithDrawer from './components/appbar-with-drawer';
-import { CssBaseline } from '@material-ui/core';
+import React from "react";
+import "./App.css";
+import ComplaintsForm from "./views/ComplaintsForm";
+import About from "./views/About";
+import AppBarWithDrawer from "./components/appbar-with-drawer";
+import { CssBaseline } from "@material-ui/core";
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const App = () => {
   return (
@@ -26,6 +22,6 @@ const App = () => {
       </Switch>
     </Router>
   );
-}
+};
 
 export default App;

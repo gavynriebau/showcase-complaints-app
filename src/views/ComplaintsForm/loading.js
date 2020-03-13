@@ -1,27 +1,27 @@
-import React from 'react';
-import { CircularProgress } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import React from "react";
+import { CircularProgress } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
-    centeredContent: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexGrow: 1,
-        marginTop: -1 * theme.spacing(16)
-    }
+  centeredContent: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    flexGrow: 1,
+    marginTop: -1 * theme.spacing(16)
+  }
 }));
 
 const Loading = () => {
-    const classes = useStyles();
+  const classes = useStyles();
 
-    return (
-        <div className={classes.centeredContent}>
-            <CircularProgress />
-            <p>...submitting complaint...</p>
-        </div>
-    );
-}
+  return (
+    <div className={classes.centeredContent}>
+      <CircularProgress />
+      <p>...submitting complaint...</p>
+    </div>
+  );
+};
 
 export default Loading;
