@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useReducer, useCallback } from "react";
 import {
   Button,
   Grid,
@@ -16,6 +16,14 @@ import Header from "../../components/header";
 import Caption from "./caption";
 import Loading from "./loading";
 import Completed from "./completed";
+import {
+  setMode,
+  setName,
+  setPersonInvolved,
+  setDescription,
+  setIncidentType
+} from "./actions";
+import { reducer } from "./reducer";
 
 const useStyles = makeStyles(theme => ({
   content: {
@@ -32,34 +40,42 @@ const useStyles = makeStyles(theme => ({
 
 const FAKE_LOADING_TIME_MS = 1000;
 
-const FormStates = Object.freeze({
+const FormModes = Object.freeze({
   loading: 0,
   ready: 1,
   completed: 2
 });
 
+const initialFormState = {
+  mode: FormModes.ready,
+  name: "",
+  incidentType: null,
+  personInvolved: "",
+  description: ""
+};
+
 const ComplaintsForm = () => {
   const classes = useStyles();
-  const [formState, setFormState] = useState(FormStates.ready);
+  const [state, dispatch] = useReducer(reducer, initialFormState);
 
   const handleSubmit = useCallback(
     event => {
       event.preventDefault();
-      setFormState(FormStates.loading);
+      dispatch(setMode(FormModes.loading));
       setTimeout(
-        () => setFormState(FormStates.completed),
+        () => dispatch(setMode(FormModes.completed)),
         FAKE_LOADING_TIME_MS
       );
     },
-    [setFormState]
+    [dispatch]
   );
 
-  if (formState === FormStates.loading) {
+  if (state.mode === FormModes.loading) {
     return <Loading />;
   }
 
-  if (formState === FormStates.completed) {
-    return <Completed onReset={() => setFormState(FormStates.ready)} />;
+  if (state.mode === FormModes.completed) {
+    return <Completed onReset={() => dispatch(setMode(FormModes.ready))} />;
   }
 
   return (
@@ -72,14 +88,25 @@ const ComplaintsForm = () => {
         <Caption />
       </Box>
       <form className={classes.form} onSubmit={handleSubmit}>
-        <TextField fullWidth variant="outlined" label="Your name" />
+        <TextField
+          fullWidth
+          variant="outlined"
+          label="Your name"
+          value={state.name}
+          onChange={event => dispatch(setName(event.target.value))}
+        />
         <FormControl
           fullWidth
           variant="outlined"
           className={classes.formControl}
         >
           <InputLabel id="incident-type-label">Incident Type</InputLabel>
-          <Select labelId="incident-type-label" id="incident-type">
+          <Select
+            labelId="incident-type-label"
+            id="incident-type"
+            value={state.incidentType}
+            onChange={event => dispatch(setIncidentType(event.target.value))}
+          >
             <MenuItem value={1}>Case mishandling</MenuItem>
             <MenuItem value={2}>Improper staff conduct</MenuItem>
             <MenuItem value={3}>Other</MenuItem>
@@ -89,6 +116,8 @@ const ComplaintsForm = () => {
           fullWidth
           variant="outlined"
           label="Name of person involved"
+          value={state.personInvolved}
+          onChange={event => dispatch(setPersonInvolved(event.target.value))}
         />
         <TextField
           fullWidth
@@ -96,6 +125,8 @@ const ComplaintsForm = () => {
           variant="outlined"
           label="Description of what happened"
           rows="8"
+          value={state.description}
+          onChange={event => dispatch(setDescription(event.target.value))}
         />
         <Grid container justify="flex-end">
           <Button
