@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import {
     Button,
     Grid,
@@ -42,11 +42,11 @@ const ComplaintsForm = () => {
     const classes = useStyles();
     const [formState, setFormState] = useState(FormStates.ready);
 
-    const handleSubmit = (event) => {
+    const handleSubmit = useCallback((event) => {
         event.preventDefault();
         setFormState(FormStates.loading);
         setTimeout(() => setFormState(FormStates.completed), FAKE_LOADING_TIME_MS);
-    };
+    }, [setFormState]);
 
     if (formState === FormStates.loading) {
         return <Loading />
