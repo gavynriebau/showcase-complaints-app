@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import ComplaintsForm from './components/complaints-form';
-import About from './components/about';
+import ComplaintsForm from './views/ComplaintsForm';
+import About from './views/About';
 import AppBarWithDrawer from './components/appbar-with-drawer';
 import { CssBaseline } from '@material-ui/core';
 

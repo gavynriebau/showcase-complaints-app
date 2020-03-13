@@ -9,12 +9,13 @@ import {
     InputLabel,
     Select,
     MenuItem,
-    CircularProgress,
     Box
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import Header from './header';
-import { Link } from 'react-router-dom';
+import Header from '../../components/header';
+import Caption from './caption';
+import Loading from './loading';
+import Completed from './completed';
 
 const useStyles = makeStyles(theme => ({
     content: {
@@ -27,14 +28,6 @@ const useStyles = makeStyles(theme => ({
             marginBottom: theme.spacing(1),
         }
     },
-    centeredContent: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexGrow: 1,
-        marginTop: -1 * theme.spacing(16)
-    }
 }));
 
 const FAKE_LOADING_TIME_MS = 1000;
@@ -44,49 +37,6 @@ const FormStates = Object.freeze({
     ready: 1,
     completed: 2
 });
-
-function Caption() {
-    return (
-        <Typography variant="caption">
-            * This is a demo app, no information is actually captured or stored, for more details
-            see <Link to="/about">about</Link>
-        </Typography>
-    );
-}
-
-function Loading() {
-    const classes = useStyles();
-
-    return (
-        <div className={classes.centeredContent}>
-            <CircularProgress />
-            <p>...submitting complaint...</p>
-        </div>
-    );
-}
-
-function Completed(props) {
-    const classes = useStyles();
-
-    const handleResetClick = () => {
-        props.onReset();
-    };
-
-    return (
-        <Container className={classes.centeredContent}>
-            <Header>Your complaint has been submitted</Header>
-            <Box my={2}>
-                <Typography variant="body1">
-                    Please allow a few days for someone to contact you about the problem you reported
-                </Typography>
-                <Caption />
-            </Box>
-            <Button variant="contained" size="large" onClick={handleResetClick}>
-                Reset
-            </Button>
-        </Container>
-    );
-}
 
 function ComplaintsForm() {
     const classes = useStyles();
