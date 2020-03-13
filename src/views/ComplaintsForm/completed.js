@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function Completed(props) {
+const Completed = (props) => {
     const classes = useStyles();
 
     const handleResetClick = () => {

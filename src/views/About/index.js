@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function About() {
+const About = () => {
     const classes = useStyles();
 
     return (

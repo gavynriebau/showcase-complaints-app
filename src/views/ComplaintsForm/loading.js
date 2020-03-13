@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function Loading() {
+const Loading = () => {
     const classes = useStyles();
 
     return (

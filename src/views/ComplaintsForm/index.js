@@ -38,7 +38,7 @@ const FormStates = Object.freeze({
     completed: 2
 });
 
-function ComplaintsForm() {
+const ComplaintsForm = () => {
     const classes = useStyles();
     const [formState, setFormState] = useState(FormStates.ready);
 

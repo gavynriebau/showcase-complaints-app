@@ -41,7 +41,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function AppBarWithDrawer() {
+const AppBarWithDrawer = () => {
     const classes = useStyles();
     const [menuOpen, setMenuOpen] = useState(false);
     const history = useHistory();
@@ -81,6 +81,6 @@ function AppBarWithDrawer() {
             </Drawer>
         </>
     );
-}
+};
 
 export default AppBarWithDrawer;

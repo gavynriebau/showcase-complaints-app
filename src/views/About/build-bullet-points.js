@@ -8,7 +8,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-function BuildBulletPoints() {
+const BuildBulletPoints = () => {
     const classes = useStyles();
 
     return (
