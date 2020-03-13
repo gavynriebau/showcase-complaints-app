@@ -1,7 +1,5 @@
-export default Object.freeze({
-  SetMode: "SET_MODE",
-  SetName: "SET_NAME",
-  SetPersonInvolved: "SET_PERSON_INVOLVED",
-  SetDescription: "SET_DESCRIPTION",
-  SetIncidentType: "SET_INCIDENT_TYPE"
-});
+export const SET_MODE = "SET_MODE";
+export const SET_NAME = "SET_NAME";
+export const SET_PERSON_INVOLVED = "SET_PERSON_INVOLVED";
+export const SET_DESCRIPTION = "SET_DESCRIPTION";
+export const SET_INCIDENT_TYPE = "SET_INCIDENT_TYPE";

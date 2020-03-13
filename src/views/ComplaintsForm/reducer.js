@@ -1,28 +1,34 @@
-import ActionTypes from "./action-types";
+import {
+  SET_MODE,
+  SET_NAME,
+  SET_PERSON_INVOLVED,
+  SET_DESCRIPTION,
+  SET_INCIDENT_TYPE
+} from "./action-types";
 
 export const reducer = (state, action) => {
   switch (action.type) {
-    case ActionTypes.SetMode:
+    case SET_MODE:
       return {
         ...state,
         mode: action.mode
       };
-    case ActionTypes.SetName:
+    case SET_NAME:
       return {
         ...state,
         name: action.name
       };
-    case ActionTypes.SetPersonInvolved:
+    case SET_PERSON_INVOLVED:
       return {
         ...state,
         personInvolved: action.personInvolved
       };
-    case ActionTypes.SetDescription:
+    case SET_DESCRIPTION:
       return {
         ...state,
         description: action.description
       };
-    case ActionTypes.SetIncidentType:
+    case SET_INCIDENT_TYPE:
       return {
         ...state,
         incidentType: action.incidentType

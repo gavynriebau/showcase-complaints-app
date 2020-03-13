@@ -1,27 +1,33 @@
-import ActionTypes from "./action-types";
+import {
+  SET_MODE,
+  SET_NAME,
+  SET_PERSON_INVOLVED,
+  SET_DESCRIPTION,
+  SET_INCIDENT_TYPE
+} from "./action-types";
 
 const setMode = mode => ({
-  type: ActionTypes.SetMode,
+  type: SET_MODE,
   mode
 });
 
 const setName = name => ({
-  type: ActionTypes.SetName,
+  type: SET_NAME,
   name
 });
 
 const setPersonInvolved = personInvolved => ({
-  type: ActionTypes.SetPersonInvolved,
+  type: SET_PERSON_INVOLVED,
   personInvolved
 });
 
 const setDescription = description => ({
-  type: ActionTypes.SetDescription,
+  type: SET_DESCRIPTION,
   description
 });
 
 const setIncidentType = incidentType => ({
-  type: ActionTypes.SetIncidentType,
+  type: SET_INCIDENT_TYPE,
   incidentType
 });
 
