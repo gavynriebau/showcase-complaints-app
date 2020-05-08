@@ -13,9 +13,9 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Header from "../../components/header";
-import Caption from "./caption";
-import Loading from "./loading";
-import Completed from "./completed";
+import Caption from "./components/caption";
+import Loading from "./components/loading";
+import Completed from "./components/completed";
 import {
   setMode,
   setName,

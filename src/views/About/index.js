@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Header from "../../components/header";
-import BuildBulletPoints from "./build-bullet-points";
+import BuildBulletPoints from "./components/build-bullet-points";
 
 const useStyles = makeStyles(theme => ({
   content: {

@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button, Typography, Container, Box } from "@material-ui/core";
-import Header from "../../components/header";
+import Header from "../../../components/header";
 import Caption from "./caption";
 
 const useStyles = makeStyles(theme => ({
